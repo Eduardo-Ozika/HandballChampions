@@ -13,9 +13,9 @@ public class Team implements Comparable<Team>{
     private Long id;
 
     private String name;
-    @ManyToOne
+    @OneToMany
     private List<Player> players = new ArrayList<>();
-    private Captain captain;
+    private TipoJogador tipoJogador;
     @OneToOne
     private Stadium homeStadium;
     private int points;
@@ -33,9 +33,9 @@ public class Team implements Comparable<Team>{
         this.id = id;
     }
 
-    public Team(String name, Captain captain, Stadium homeStadium) {
+    public Team(String name, TipoJogador tipoJogador, Stadium homeStadium) {
         this.name = name;
-        this.captain = captain;
+        this.tipoJogador = tipoJogador;
         this.homeStadium = homeStadium;
         this.points = 0;
     }
@@ -56,12 +56,12 @@ public class Team implements Comparable<Team>{
         this.players = players;
     }
 
-    public Captain getCaptain() {
-        return captain;
+    public TipoJogador getCaptain() {
+        return tipoJogador;
     }
 
-    public void setCaptain(Captain captain) {
-        this.captain = captain;
+    public void setCaptain(TipoJogador tipoJogador) {
+        this.tipoJogador = tipoJogador;
     }
 
     public Stadium getStadium() {
