@@ -1,6 +1,6 @@
 package br.com.crp.handeballCamp.model.entity;
 
-public enum Captain {
+public enum TipoJogador {
     PLAYER,
     CAPTAIN
 }
