@@ -9,12 +9,14 @@ public class Player implements Comparable<Player>{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
     private String birthDate;
-    private char gender;
+    private Gender gender;
     private Double height;
-    @OneToMany
+    private Double weight;
+    @Enumerated(EnumType.STRING)
+    TipoJogador tipo = TipoJogador.PLAYER;
+    @ManyToOne
     private Team team;
 
     public Long getId() {
@@ -25,12 +27,13 @@ public class Player implements Comparable<Player>{
         this.id = id;
     }
 
-    public Player(String name, String birthDate, char gender, Double height, Team team) {
+    public Player(String name, String birthDate, Gender gender, Double height, Team team, Double weight) {
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
         this.height = height;
         this.team = team;
+        this.weight=weight;
     }
 
     public String getName() {
@@ -49,11 +52,11 @@ public class Player implements Comparable<Player>{
         this.birthDate = birthDate;
     }
 
-    public char getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -63,6 +66,30 @@ public class Player implements Comparable<Player>{
 
     public void setHeight(Double height) {
         this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public TipoJogador getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoJogador tipo) {
+        this.tipo = tipo;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     @Override
