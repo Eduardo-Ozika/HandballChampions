@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>TODO supply a title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>FORM</h1>
+<form th:action="${team.id == null} ? @{/team/save} : @{/team/update}" th:object="${team}" method="post">
+  <input type="hidden" th:field="*{id}">
+  <input type="text" th:field="*{name}"  placeholder="Nome">
+  <select th:field="*{stadium.id}">
+    <option th:each="p : ${stadium}" th:value="${p.id}" th:text="${p.name}" />
+  </select>
+  <input type="submit" value="Enviar">
+</form>
+</body>
+</html>

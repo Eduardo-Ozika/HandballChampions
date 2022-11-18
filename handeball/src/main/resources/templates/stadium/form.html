@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>TODO supply a title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>FORM</h1>
+<form th:action="${stadium.id == null} ? @{/stadium/save} : @{/stadium/update}" th:object="${stadium}" method="post">
+  <input type="hidden" th:field="*{id}">
+  <input type="text" th:field="*{name}"  placeholder="Nome">
+  <br>
+  <br>
+  <input type="hidden" th:field="*{address.id}">
+  <input type="text" th:field="*{address.place}"  placeholder="Endereço">
+  <br>
+  <input type="number" th:field="*{address.number}"  placeholder="number">
+  <br>
+  <input type="text" th:field="*{address.zipCode}"  placeholder="CEP">
+  <br>
+  <input type="text" th:field="*{address.district}"  placeholder="Bairo">
+  <input type="submit" value="Enviar">
+</form>
+</body>
+</html>

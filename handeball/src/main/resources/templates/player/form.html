@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>TODO supply a title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>FORM</h1>
+<form th:action="${player.id == null} ? @{/player/save} : @{/player/update}" th:object="${player}" method="post">
+  <input type="hidden" th:field="*{id}">
+  <input type="text" th:field="*{name}"  placeholder="Nome">
+  <br>
+  <input type="date" th:field="*{birthDate}"/>
+  <br>
+  <select name="gender">
+    <option th:each="genderOpt : ${T(br.com.crp.handeball.model.entity.Gender).values()}"
+            th:value="${genderOpt}" th:text="${genderOpt}"></option>
+  </select>
+  <br>
+  <input type="number" step="0.01" th:field="*{height}"  placeholder="Altura">
+  <br>
+  <input type="number" step="0.01" th:field="*{weight}"  placeholder="Peso">
+  <input type="submit" value="Enviar">
+</form>
+</body>
+</html>
